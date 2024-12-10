@@ -1,7 +1,6 @@
 
 const { Bootcamp,User}  = require("../models");
 
-const conexion = require("../config/db.config.js")
 
 const createBootcamp = (dataBootcamp)=>{
     return new Promise(async (resolve,reject)=>{
@@ -14,7 +13,8 @@ const createBootcamp = (dataBootcamp)=>{
     });
 }
 
-const addUser = async (bootcampId, userId) => {
+const addUser = async (data) => {
+    const { userId, bootcampId } = data; 
     try {
       const bootcamp = await Bootcamp.findByPk(bootcampId);
       const user = await User.findByPk(userId);
